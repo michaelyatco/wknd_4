@@ -12,8 +12,7 @@
 # Inheritance in Ruby, and use it to remove the duplication (or DRY up) the code 
 # below. You must also write the driver code to test your classes.
 
-class SimpleCalculator
-
+class Calculator
   def add(first_number, second_number)
     first_number + second_number
   end
@@ -32,23 +31,10 @@ class SimpleCalculator
 
 end
 
-class FancyCalculator
+class SimpleCalculator < Calculator
+end
 
-  def add(first_number, second_number)
-    first_number + second_number
-  end
-
-  def subtract(first_number, second_number)
-    first_number - second_number
-  end
-
-  def multiply(first_number, second_number)
-    first_number * second_number
-  end
-
-  def divide(first_number, second_number)
-    first_number / second_number
-  end
+class FancyCalculator < Calculator
 
   def square_root(number)
     Math.sqrt(number)
@@ -57,4 +43,18 @@ class FancyCalculator
 end
 
 # Write your own driver code below:
+
+calc = SimpleCalculator.new
+puts calc.add(2, 2)
+puts calc.subtract(2, 2)
+puts calc.multiply(2, 2)
+puts calc.divide(2, 2)
+# puts calc.square_root(4) - #breaks the program
+
+fancycalc = FancyCalculator.new
+puts fancycalc.add(2, 2)
+puts fancycalc.subtract(2, 2)
+puts fancycalc.multiply(2, 2)
+puts fancycalc.divide(2, 2)
+puts fancycalc.square_root(4)
 
